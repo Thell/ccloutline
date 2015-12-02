@@ -1,0 +1,79 @@
+## Timing
+
+Ensure microbenchmark is installed.
+Clean and rebuild package.
+Source `time-it.R`
+
+Example output...
+
+~~~
+f(n_row = 512, n_col = 512, group.count = 2)
+
+Total connected components:  1866 
+Membership size summary:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+     1.0      1.0      1.0    140.5      2.0 129300.0 
+
+Total edges:  526064 
+Component edge summary:
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+     4.0      4.0      4.0    281.9      8.0 256900.0 
+
+Unit: milliseconds
+     expr       min        lq      mean    median        uq       max neval
+  borders  4.458817  4.608075  5.778132  4.670623  5.580624  43.26278   100
+   labels  7.131657  7.277304  8.251978  7.489723  8.215916  46.12093   100
+    edges 12.191724 12.665982 15.003787 13.239696 14.124934  52.43332   100
+   cycles 28.892855 29.690159 32.081565 30.289891 31.458462  69.38181   100
+    paths 37.731551 39.252771 42.976847 40.365536 41.454111  79.25501   100
+ outlines 52.138789 54.601072 59.494678 55.798091 57.651033 100.95755   100
+
+Isolated units:
+        borders labels edges cycles  paths outlines
+time      4.671  2.819 5.750 17.050 10.076   15.433
+percent   0.084  0.051 0.103  0.306  0.181    0.277
+~~~
+
+## Profiling
+
+
+Install google-prof
+
+~~~
+sudo apt-get -y install google-perftools libgoogle-perftools-dev
+~~~
+
+Open a new session and set package build flags.
+
+~~~
+Sys.setenv("PKG_LIBS"="-lprofiler")
+Sys.setenv("PKG_CXXFLAGS"="-g -fno-omit-frame-pointer -D CCL_GPROF")
+~~~
+
+Clean and Rebuild the package then in a terminal run the profile script.
+
+~~~
+R --slave -f test/profile/profile-it.R
+~~~
+
+Example output...
+
+~~~
+Profiling...
+f(n_row = 4096, n_col = 4096, group.count = 2)
+   user  system elapsed 
+  4.252   0.452   4.701 
+
+ google-pprof --web --focus=ccl_outlines ./src/ccloutline.so ./ccl-gprof-170b4fd9dfeb.out 
+
+PROFILE: interrupts/evictions/bytes = 1263/99/146160
+~~~
+
+Use the generated command for a high level call/timing view.
+Narrow the _focus_ using the namespace `ccloutline::<function>`
+
+Close the session and `Clean and Rebuild` again to install without profiler overhead.
+
+See `sample.svg` for an example of the output.
+
+

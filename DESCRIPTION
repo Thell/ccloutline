@@ -1,0 +1,19 @@
+Package: ccloutline
+Type: Package
+Title: Connected Component Labelling and Eulerian Cycle Outlines.
+Version: 0.1.0
+Author: Thell Fowler
+Maintainer: Thell Folwer <thell@tbfowler.name>
+Description: Generate cartesian coordinate line paths outlining the
+ outer and inner connected component edges identified within a numeric
+ matrix.
+License: GPL (>= 3)
+LazyData: TRUE
+SystemRequirements: C++11
+Imports:
+    Rcpp (>= 0.12.1),
+    RcppArmadillo
+LinkingTo:
+    Rcpp,
+    RcppArmadillo
+RoxygenNote: 5.0.1
