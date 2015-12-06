@@ -75,5 +75,7 @@ Narrow the _focus_ using the namespace `ccloutline::<function>`
 Close the session and `Clean and Rebuild` again to install without profiler overhead.
 
 See `sample.svg` for an example of the output.
+(If you are viewing this on Github click the `sample.svg` file, then
+right click and `open image in new tab` - or something like that.)
 
 
