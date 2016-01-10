@@ -3,33 +3,6 @@
 Connected component labeling, euler cycle extraction and outline
 point paths.
 
-----
-
-Processing of a 10,000x10,000 matrix with a random binary population
-takes __400mb of input__ data and generates __7.3gb of output__ in
-~28s on a i7-4700MQ with 24gb memory single threaded.
-
-The connected component labeling took ~3s for 656,972 individual
-components. The eulerian path extraction (200,012,368 edges) represented
-an additional 9 seconds after generating component edges. The largest
-consumer of time is the final list of matrices structure wrapping.
-
-Total memory consumed while processing peaked at just under 19gb.
-
-Rather than a linked list or adjacency matrix for edges, each edge
-in the lattice structure is directed and each vertex is stored with
-its outgoing neighbors in a lookup array of tuples; taking advantage
-of the fact that there is at most 2 degrees for any vertex.
-
-See:
-
-- CCLREMSP - Algorithm 4 _A New Parallel Algorithm for Two-Pass Connected
-Component Labeling_, Gupta et al.
-
-- Cheriyan-Mehlhorn-Gabow SCC Algorithm - An Extended Experimental Evaluation of SCC (Gabow's vs Kosaraju's) based on Adjacency List
- 
----------------------
-
 ### Example
 
 While the examples just show binary input, any values within a numeric
@@ -48,6 +21,8 @@ input:
 0 0 0 0 0 0 1 1 1 1 0 0 1 1 1 1 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 ~~~
+
+![](wiki_sample_mat.png)
 
 labels and component populations:
 
@@ -145,5 +120,32 @@ output:
 [5,]     1   1 1 1
 ~~~
 
-The outlines can be fed into a plotting function to create borders
-for each component.
+
+----
+
+Some misc. performance info...
+
+Processing of a 10,000x10,000 matrix with a random binary population
+takes __400mb of input__ data and generates __7.3gb of output__ in
+~28s on a i7-4700MQ with 24gb memory single threaded.
+
+The connected component labeling took ~3s for 656,972 individual
+components. The eulerian path extraction (200,012,368 edges) represented
+an additional 9 seconds after generating component edges. The largest
+consumer of time is the final list of matrices structure wrapping.
+
+Total memory consumed while processing peaked at just under 19gb.
+
+Rather than a linked list or adjacency matrix for edges, each edge
+in the lattice structure is directed and each vertex is stored with
+its outgoing neighbors in a lookup array of tuples; taking advantage
+of the fact that there is at most 2 degrees for any vertex.
+
+See:
+
+- CCLREMSP - Algorithm 4 _A New Parallel Algorithm for Two-Pass Connected
+Component Labeling_, Gupta et al.
+
+- Cheriyan-Mehlhorn-Gabow SCC Algorithm - An Extended Experimental Evaluation of SCC (Gabow's vs Kosaraju's) based on Adjacency List
+ 
+---------------------

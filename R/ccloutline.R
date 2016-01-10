@@ -29,3 +29,11 @@ NULL
     })
   })
 }
+
+#' Connected component extraction.
+#'
+#' A matrix of binary values representing components.
+#'
+#' @format A matrix 9 rows and 17 variables:
+#' @source \url{https://en.wikipedia.org/wiki/Connected-component_labeling#Graphical_example_of_two-pass_algorithm}
+"wiki_sample_mat"
