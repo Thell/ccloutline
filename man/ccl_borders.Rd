@@ -25,4 +25,3 @@ fully enclosed by similar neighbors has no borders ( a 0 value )
 whereas when fully enclosed by dissimilar neighbors is fully
 bordered ( a 255 value ).
 }
-

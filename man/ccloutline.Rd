@@ -3,7 +3,6 @@
 \docType{package}
 \name{ccloutline}
 \alias{ccloutline}
-\alias{ccloutline-package}
 \title{Connected component labelling and eulerian cycle outlines.}
 \description{
 Given a 2 dimensional matrix generate the cartesian
@@ -17,4 +16,3 @@ Thell Fowler \email{thell@tbfowler.name}
 \keyword{ccl}
 \keyword{outline}
 \keyword{package}
-

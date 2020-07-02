@@ -28,4 +28,3 @@ There is a performance hit with `min_first`.
 \seealso{
 ccl_borders, ccl_labels, ccl_vertices, ccl_cycles, ccl_paths
 }
-

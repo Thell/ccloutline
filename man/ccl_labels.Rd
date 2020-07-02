@@ -18,4 +18,3 @@ Numeric matrix of the same dimensions as mat with
 8-way neighborhood connected component labelling of
 all given values.
 }
-

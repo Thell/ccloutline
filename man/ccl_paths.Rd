@@ -30,4 +30,3 @@ There is a performance hit with `reverse`.
 \seealso{
 ccl_cycles
 }
-

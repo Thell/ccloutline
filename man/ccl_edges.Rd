@@ -23,4 +23,3 @@ within \code{m}.
 Connected component directed edge vertex
 connections.
 }
-

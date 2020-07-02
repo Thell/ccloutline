@@ -29,4 +29,3 @@ There is a slight performance hit with `reverse` as this
 forces a scan of the vertices for the minimal remaining valued
 vertice and reorders the final results.
 }
-
