@@ -158,5 +158,6 @@ cc_nested_sz_vec cycles(const border_mat& borders, const Labels& labels,
 Rcpp::List ccl_cycles(const arma::mat& m, bool reverse = false) {
   const auto b(ccloutline::borders(m));
   const auto l(ccloutline::labels(b));
-  return Rcpp::wrap(ccloutline::cycles(b, l, reverse));
+  auto c(ccloutline::cycles(b, l, reverse));
+  return Rcpp::wrap(c);
 }

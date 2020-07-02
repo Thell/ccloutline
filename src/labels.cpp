@@ -103,7 +103,8 @@ Labels labels(const border_mat& border_states) {
 Rcpp::List ccl_labels(const arma::mat& m) {
   using namespace Rcpp;
   const auto b(ccloutline::borders(m));
-  const auto l(ccloutline::labels(b));
-  return List::create(wrap(arma::conv_to<arma::mat>::from(l.first)),
-                      wrap(l.second));
+  auto l(ccloutline::labels(b));
+  arma::mat l_conv = arma::conv_to<arma::mat>::from(l.first);
+  NumericVector l_sizes = wrap(l.second);
+  return List::create(_["labels"]=wrap(l_conv),  _["sizes"]=l_sizes);
 }

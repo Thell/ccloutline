@@ -7,7 +7,7 @@
 using namespace Rcpp;
 
 // ccl_borders
-arma::mat ccl_borders(const arma::mat& m);
+Rcpp::NumericMatrix ccl_borders(const arma::mat& m);
 RcppExport SEXP _ccloutline_ccl_borders(SEXP mSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

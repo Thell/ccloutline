@@ -104,5 +104,6 @@ nested_sz_vec edges(const border_mat& border_states, const Labels& ccl_stats) {
 Rcpp::List ccl_edges(const arma::mat& m) {
   const auto b(ccloutline::borders(m));
   const auto l(ccloutline::labels(b));
-  return Rcpp::wrap(ccloutline::edges(b, l));
+  auto e(ccloutline::edges(b, l));
+  return Rcpp::wrap(e);
 }

@@ -86,6 +86,8 @@ border_mat borders(const arma::mat& m) {
 //' @name ccl_borders
 //' @export
 // [[Rcpp::export]]
-arma::mat ccl_borders(const arma::mat& m) {
-  return arma::conv_to<arma::mat>::from(ccloutline::borders(m));
+ Rcpp::NumericMatrix ccl_borders(const arma::mat& m) {
+  auto b(ccloutline::borders(m));
+  arma::mat b_conv = arma::conv_to<arma::mat>::from(b);
+  return Rcpp::wrap(b_conv);
 }

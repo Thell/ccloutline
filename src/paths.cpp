@@ -70,5 +70,6 @@ Rcpp::List ccl_paths(const arma::mat& m, const bool reverse = false) {
   const auto b(ccloutline::borders(m));
   const auto l(ccloutline::labels(b));
   const auto c(ccloutline::cycles(b, l, reverse));
-  return Rcpp::wrap(ccloutline::paths(c, m.n_rows + 1));
+  auto p(ccloutline::paths(c, m.n_rows + 1));
+  return Rcpp::wrap(p);
 }
